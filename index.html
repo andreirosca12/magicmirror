@@ -3,36 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Personal Dashboard</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="wrapper">
+        <!-- Sectiunea pentru vreme -->
         <div class="weather">
-            <img src="" alt="">
-            <h2>Locatie</h2>
-            <p>Grade</p>
+            <img src="" alt="Weather icon">
+            <h2>Locație utilizator</h2>
+            <p id="temperature">Grade Celsius</p>
+            <p id="forecast">Prognoza meteo pentru următoarele zile</p>
         </div>
+
+        <!-- Sectiunea pentru lista de activitati -->
         <div class="todo">
-            <ol>
+            <h3>To-Do List</h3>
+            <ol id="task-list">
                 <li>Task1</li>
                 <li>Task2</li>
                 <li>Task3</li>
             </ol>
         </div>
+
+        <!-- Sectiunea pentru cursul valutar -->
         <div class="exchange">
-            <ul>
-                <li>EUR</li>
-                <li>USD</li>
-                <li>GBD</li>
+            <h3>Curs Valutar</h3>
+            <ul id="currency-list">
+                <li>EUR: ...</li>
+                <li>USD: ...</li>
+                <li>GBP: ...</li>
             </ul>
         </div>
+
+        <!-- Sectiunea pentru stiri -->
         <div class="news">
-            <ul>
-                <li>Stire 1</li>
-                <li>Stire 2</li>
-                <li>Stire 3</li>
+            <h3>Știri Importante</h3>
+            <ul id="news-list">
+                <li>Știre 1</li>
+                <li>Știre 2</li>
+                <li>Știre 3</li>
             </ul>
+        </div>
+
+        <!-- Sectiunea pentru citatul zilei -->
+        <div class="quote">
+            <h3>Citatul zilei</h3>
+            <p id="quote">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
         </div>
     </div>
 </body>

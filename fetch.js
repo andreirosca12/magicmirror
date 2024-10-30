@@ -35,3 +35,49 @@ async function fetchNews(force = false) {
     const apiUrl = 'https://newsapi.org/v2/top-headlines?country=row&apiKey=YOUR_API_KEY';
 
 }
+
+function getTodos() {
+    const todos = localStorage.getItem('todos');
+    return todos ? JSON.parse(todos) : [];
+}
+
+function addTodo(taskString) {
+    const todos = getTodos();
+    todos.push({ task: taskString, completed: false });
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function removeTodo(index) {
+    const todos = getTodos();
+    todos.splice(index, 1);
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function toggleTodoCompleted(index) {
+    const todos = getTodos();
+    todos[index].completed = !todos[index].completed;
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function getEvents() {
+    const events = localStorage.getItem('events');
+    return events ? JSON.parse(events) : [];
+}
+
+function addEvent(eventString, date) {
+    const events = getEvents();
+    events.push({ event: eventString, date });
+    localStorage.setItem('events', JSON.stringify(events));
+}
+
+function removeEvent(index) {
+    const events = getEvents();
+    events.splice(index, 1);
+    localStorage.setItem('events', JSON.stringify(events));
+}
+
+function updateEvent(index, eventString, date) {
+    const events = getEvents();
+    events[index] = { event: eventString, date };
+    localStorage.setItem('events', JSON.stringify(events));
+}

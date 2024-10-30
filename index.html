@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Personal Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="wrapper">
-        <!-- Vremea -->
-        <div class="weather">
-            <img src="images\cloudy.png" alt="Weather icon">
-            <h2>Locație utilizator</h2>
-            <p id="temperature">Grade Celsius</p>
-            <p id="forecast">Prognoza meteo pentru următoarele zile</p>
-        </div>
+      <!-- Vremea -->
+      <div class="weather">
+        <img src="images\cloudy.png" alt="Weather icon" />
+        <h2>Locație utilizator</h2>
+        <p id="temperature">Grade Celsius</p>
+        <p id="forecast">Prognoza meteo pentru următoarele zile</p>
+      </div>
 
-        <!-- Stiri -->
-        <div class="news">
-            <h3>Știri Importante</h3>
-            <ul id="news-list">
-                <li>Știre 1</li>
-                <li>Știre 2</li>
-                <li>Știre 3</li>
-            </ul>
-        </div>
+      <!-- Stiri -->
+      <div class="news">
+        <h3>Știri Importante</h3>
+        <ul id="news-list">
+          <li>Știre 1</li>
+          <li>Știre 2</li>
+          <li>Știre 3</li>
+        </ul>
+      </div>
 
-        <!-- To-Do List -->
-        <div class="todo">
-            <h3>To-Do List</h3>
-            <ol id="task-list">
-                <li>Task1</li>
-                <li>Task2</li>
-                <li>Task3</li>
-            </ol>
-        </div>
+      <!-- To-Do List -->
+      <div class="todo">
+        <h3>To-Do List</h3>
+        <ol id="task-list">
+          <li>Task1</li>
+          <li>Task2</li>
+          <li>Task3</li>
+        </ol>
+        <input type="text" id="task" />
+        <button id="add-task">Adaugă</button>
+      </div>
 
-        <!-- Curs Valutar -->
-        <div class="exchange">
-            <h3>Curs Valutar</h3>
-            <ul id="currency-list">
-                <li>EUR: ...</li>
-                <li>USD: ...</li>
-                <li>GBP: ...</li>
-            </ul>
-        </div>
+      <!-- Curs Valutar -->
+      <div class="exchange">
+        <h3>Curs Valutar</h3>
+        <ul id="currency-list">
+          <li>EUR: ...</li>
+          <li>USD: ...</li>
+          <li>GBP: ...</li>
+        </ul>
+      </div>
     </div>
 
     <!-- Citatul zilei in footer -->
     <footer class="quote">
-        <p id="quote">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+      <p id="quote">
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      </p>
     </footer>
-</body>
+    <script src="exchange_rate.js"></script>
+  </body>
 </html>

@@ -1,5 +1,5 @@
 const browserLanguage=navigator.language.split("-")[0];
-const api_url=`https://api.thenewsapi.com/v1/news/top?locale=${browserLanguage}&language=${browserLanguage}&api_token=qZAwHz1pnULtu0Y0UaHJT7oyku2OPiU2bnMU0fQj`;
+const api_url=`https://api.thenewsapi.com/v1/news/top?language=${browserLanguage}&api_token=qZAwHz1pnULtu0Y0UaHJT7oyku2OPiU2bnMU0fQj`;
 
 
 async function fetchNews(){

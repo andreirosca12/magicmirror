@@ -36,6 +36,30 @@ async function fetchNews(force = false) {
 
 }
 
+async function updateWeather() {
+    data = await fetchWeather();
+
+    current_temp = data.current.temperature_2m;
+    document.getElementById('temperature').innerHTML = current_temp + '°C';
+
+    forecast = data.daily;
+
+    document.getElementById('weather-daily').innerHTML = '';
+    for (let i = 0; i < forecast.temperature_2m_max.length; i++) {
+        const date = new Date(forecast.time[i]);
+        const maxTemp = forecast.temperature_2m_max[i];
+        const minTemp = forecast.temperature_2m_min[i];
+
+        const dayElement = document.createElement('div');
+        dayElement.innerHTML = `${date.getDate()}/${date.getMonth() + 1}: ${minTemp}°C - ${maxTemp}°C`;
+        document.getElementById('weather-daily').appendChild(dayElement);
+    }
+}
+
+window.onload = async function() {
+    await updateWeather();
+}
+
 function getTodos() {
     const todos = localStorage.getItem('todos');
     return todos ? JSON.parse(todos) : [];

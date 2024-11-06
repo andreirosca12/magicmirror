@@ -48,6 +48,9 @@ async function updateWeather() {
         document.getElementById('weather-daily').appendChild(dayElement);
     }
 }
+window.onload = async function() {
+    await updateWeather();
+}
 async function fetchNews(force = false) {
     
     const apiUrl = 'https://newsapi.org/v2/top-headlines?country=row&apiKey=YOUR_API_KEY';

@@ -1,8 +1,9 @@
-const browserLanguage=navigator.language.split("-")[0];
-const api_url=`https://api.thenewsapi.com/v1/news/top?language=${browserLanguage}&api_token=qZAwHz1pnULtu0Y0UaHJT7oyku2OPiU2bnMU0fQj`;
+let browserLanguage=navigator.language.split("-")[0];
 
 
 async function fetchNews(){
+    console.log("a fost aici");
+    const api_url=`https://api.thenewsapi.com/v1/news/top?language=${browserLanguage}&api_token=qZAwHz1pnULtu0Y0UaHJT7oyku2OPiU2bnMU0fQj`;
     const response=await fetch(api_url);
     const data=await response.json();
     console.log(data.data);
@@ -14,9 +15,10 @@ async function fetchNews(){
 }
 
 async function needToFetchNews(){
+    let shouldAddNews = false;
     if(!localStorage.getItem(browserLanguage))//daca nu exista datele in local storage le luam
     {
-        await fetchNews();
+        shouldAddNews =await fetchNews();
     }
     else{
         const last_update=new Date(JSON.parse(localStorage.getItem(browserLanguage)).last_update);
@@ -24,10 +26,17 @@ async function needToFetchNews(){
         const difference=now-last_update;
         if(difference>1000*60*60*12)//daca trec 12 ore de la ultimul update luam din nou datele
         {
-            await fetchNews();
+            shouldAddNews =await fetchNews();
+        }
+        else{
+            shouldAddNews =true;
         }
     }
-    addNewsToPage();
+    if (shouldAddNews) {
+        addNewsToPage();
+    } else {
+        console.warn("No news data available to display."); // Debug: no data to show
+    }
 }
 function addNewsToPage(){
     const data=JSON.parse(localStorage.getItem(browserLanguage)).data;
@@ -97,3 +106,29 @@ addTaskButton.onclick=()=>{
 
 getTasks();
 needToFetchNews();
+let button1=document.querySelector("#ro")
+button1.onclick=async()=>{
+    browserLanguage="ro"
+    detectBrowserLanguage(browserLanguage);
+    await needToFetchNews();
+}
+let button2=document.querySelector("#es")
+button2.onclick=async()=>{
+    browserLanguage="es"
+    detectBrowserLanguage(browserLanguage);
+    await needToFetchNews();
+}
+
+let button3=document.querySelector("#en")
+button3.onclick=async()=>{
+    browserLanguage="en"
+    detectBrowserLanguage(browserLanguage);
+    await needToFetchNews();
+}
+
+let button4=document.querySelector("#de")
+button4.onclick=async()=>{
+    browserLanguage="de"
+    detectBrowserLanguage(browserLanguage);
+    await needToFetchNews();
+}

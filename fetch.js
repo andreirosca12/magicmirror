@@ -1,11 +1,36 @@
+currentLat = 44.4323;
+currentLon = 26.1063;
+
 async function fetchWeather(force = false) {
-    
-    const apiUrl = 'https://api.open-meteo.com/v1/forecast?latitude=44.4323&longitude=26.1063&current=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=Africa%2FCairo&forecast_days=3'; // e.g., `https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY`
-    
     const lastUpdate = localStorage.getItem('lastUpdate');
     const currentTime = new Date().getTime();
+    const lastLat = localStorage.getItem('lat');
+    const lastLon = localStorage.getItem('lon');
 
-    if (lastUpdate && (currentTime - lastUpdate < 3600000) && !force) {
+    if(!navigator.geolocation) {
+        if(lastLat && lastLon) {
+            currentLat = lastLat;
+            currentLon = lastLon;
+            console.log('Geolocation is not available, using last location:', currentLat, currentLon);
+        }
+        else {
+            currentLat = 44.4323;
+            currentLon = 26.1063;
+            console.log('Geolocation is not available, using default location:', currentLat, currentLon);
+        }
+    }
+    else {
+        navigator.geolocation.getCurrentPosition((position) => {
+        currentLat = position.coords.latitude;
+        currentLon = position.coords.longitude;
+        console.log('Got location:', currentLat, currentLon);
+        });
+    }
+
+    const apiUrl = 'https://api.open-meteo.com/v1/forecast?latitude='+currentLat+'&longitude='+currentLon+'&current=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=Africa%2FCairo&forecast_days=3'; // e.g., `https://api.openweathermap.org/data/2.5/weather?q=London&appid=YOUR_API_KEY`
+    
+
+    if (lastUpdate && (currentTime - lastUpdate < 3600000) && !force && currentLat == lastLat && currentLon == lastLon) {
         
         const weatherData = JSON.parse(localStorage.getItem('weatherData'));
         console.log('Using cached weather data:', weatherData);

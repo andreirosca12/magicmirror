@@ -47,21 +47,25 @@ async function needToFetchNews(){
     }
     addNewsToPage();
 }
-function addNewsToPage(){
-    const data=JSON.parse(localStorage.getItem(browserLanguage)).data;
-    if(data)
-    {
-        const news=document.querySelectorAll("#news-list li");
-        data.forEach((element,index)=> {
-            console.log(element);
-            news[index].innerHTML=`<strong>`+element.title+`</strong>`+`<br>`+element.snippet+ `<br> <br>`;
-            news[index].addEventListener("click",()=>{
-                window.open(element.link);
-            });
+function addNewsToPage() {
+    const data = JSON.parse(localStorage.getItem(browserLanguage))?.data;
+    const newsItems = document.querySelectorAll("#news-list li");
+
+    if (data && newsItems.length > 0) {
+        data.forEach((element, index) => {
+            if (newsItems[index]) { 
+                newsItems[index].innerHTML = `<strong>${element.title}</strong><br>${element.snippet}<br><br>`;
+                newsItems[index].addEventListener("click", () => {
+                    window.open(element.link);
+                });
+            }
         });
+    } else {
+        console.error("Nu s-au găsit date de știri sau elementele `li` lipsesc.");
     }
-    
 }
+
+    
 let tasks=[];
 //initializam lista cu taskuri
 function getTasks()

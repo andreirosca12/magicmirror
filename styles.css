@@ -11,7 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    min-height: 200vh;
     padding: 20px;
 }
 
@@ -22,7 +22,7 @@ body {
         "todo exchange";
     gap: 20px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 2200px;
 
 }
 
@@ -103,6 +103,8 @@ footer.quote {
 
 
 /* css for calendar */
+
+
 .calendar-header {
     display: flex;
     justify-content: space-between;

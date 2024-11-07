@@ -1,22 +1,40 @@
-const browserLanguage=navigator.language.split("-")[0];
-const api_url=`https://api.thenewsapi.com/v1/news/top?language=${browserLanguage}&api_token=qZAwHz1pnULtu0Y0UaHJT7oyku2OPiU2bnMU0fQj`;
+let browserLanguage=navigator.language.split("-")[0];
 
 
-async function fetchNews(){
-    const response=await fetch(api_url);
-    const data=await response.json();
-    console.log(data.data);
-    const dataToStore = {
-        data: data.data,                         
-        last_update: new Date()
+async function fetchNews2() {
+    let location;
+    if(browserLanguage=="en")
+        location="US"
+    else{
+        location=browserLanguage.toUpperCase();
     }
-    localStorage.setItem(browserLanguage,JSON.stringify(dataToStore));
-}
+    const url = `https://real-time-news-data.p.rapidapi.com/topic-news-by-section?topic=TECHNOLOGY&section=CAQiW0NCQVNQZ29JTDIwdk1EZGpNWFlTQW1WdUdnSlZVeUlQQ0FRYUN3b0pMMjB2TURKdFpqRnVLaGtLRndvVFIwRkVSMFZVWDFORlExUkpUMDVmVGtGTlJTQUJLQUEqKggAKiYICiIgQ0JBU0Vnb0lMMjB2TURkak1YWVNBbVZ1R2dKVlV5Z0FQAVAB&limit=3&country=${location}&lang=${browserLanguage}`;
+    const options = {
+	method: 'GET',
+	    headers: {
+		    'x-rapidapi-key': '07fcfdc303mshbc4884495c168afp1775d8jsna94b6380cc9a',
+		    'x-rapidapi-host': 'real-time-news-data.p.rapidapi.com'
+	    }
+    }
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        console.log(result.data);
+        console.log("aici");
+        const dataToStore = {
+            data: result.data,                         
+            last_update: new Date()
+        }
+        localStorage.setItem(browserLanguage,JSON.stringify(dataToStore));
+    } catch (error) {
+        console.error(error);
+    }
+};
 
 async function needToFetchNews(){
     if(!localStorage.getItem(browserLanguage))//daca nu exista datele in local storage le luam
     {
-        await fetchNews();
+        await fetchNews2();
     }
     else{
         const last_update=new Date(JSON.parse(localStorage.getItem(browserLanguage)).last_update);
@@ -24,7 +42,7 @@ async function needToFetchNews(){
         const difference=now-last_update;
         if(difference>1000*60*60*12)//daca trec 12 ore de la ultimul update luam din nou datele
         {
-            await fetchNews();
+            await fetchNews2();
         }
     }
     addNewsToPage();
@@ -36,9 +54,9 @@ function addNewsToPage(){
         const news=document.querySelectorAll("#news-list li");
         data.forEach((element,index)=> {
             console.log(element);
-            news[index].innerHTML=`<strong>`+element.title+`</strong>`+`<br>`+element.description+ `<br> <br>`;
+            news[index].innerHTML=`<strong>`+element.title+`</strong>`+`<br>`+element.snippet+ `<br> <br>`;
             news[index].addEventListener("click",()=>{
-                window.open(element.url);
+                window.open(element.link);
             });
         });
     }
@@ -79,6 +97,7 @@ function renderTasks()
         listItem.textContent=task;
 
         const deleteButton=document.createElement("button");
+        deleteButton.id = "delete-button";
         deleteButton.textContent="Delete";
 
         deleteButton.onclick=()=>{removeTask(task)};
@@ -97,3 +116,33 @@ addTaskButton.onclick=()=>{
 
 getTasks();
 needToFetchNews();
+let button1=document.querySelector("#ro")
+button1.onclick=async()=>{
+    browserLanguage="ro"
+    await needToFetchNews();
+    detectBrowserLanguage(browserLanguage);
+    
+}
+let button2=document.querySelector("#es")
+button2.onclick=async()=>{
+    browserLanguage="es"
+    await needToFetchNews();
+    detectBrowserLanguage(browserLanguage);
+    
+}
+
+let button3=document.querySelector("#en")
+button3.onclick=async()=>{
+    browserLanguage="en"
+    await needToFetchNews();
+    detectBrowserLanguage(browserLanguage);
+    
+}
+
+let button4=document.querySelector("#de")
+button4.onclick=async()=>{
+    browserLanguage="de"
+    await needToFetchNews();
+    detectBrowserLanguage(browserLanguage);
+    
+}

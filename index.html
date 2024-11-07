@@ -40,7 +40,28 @@
       </div>
 
       <!-- Adding Calendar -->
-      <iframe src="https://calendar.google.com/calendar/embed?height=350&wkst=2&ctz=Europe%2FBucharest&showPrint=0&src=ZDZlNWYyNWYxMTFmOTcxNDA1YjRhZjBkZGJjMTY3ZmVmNmM2NmI1MmVmZDk4Yjk4NTM5NTQ2OGRiNTcwN2Y4YkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=cm8ucm9tYW5pYW4jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23795548&color=%230B8043" style="border:solid 1px #777" width="300" height="350" frameborder="0" scrolling="no"></iframe>
+      <div class="calendar">
+        <div class="calendar-header">
+            <button onclick="prevMonth()">❮</button>
+            <h2 id="month-year"></h2>
+            <button onclick="nextMonth()">❯</button>
+        </div>
+        <div class="calendar-days">
+            <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
+        </div>
+        <div class="calendar-grid" id="calendar-grid"></div>
+    </div>
+
+    <div class="modal" id="task-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="selected-date"></h2>
+            <textarea id="task-input" placeholder="Enter your tasks here..."></textarea>
+            <button onclick="saveTask()">Save Task</button>
+        </div>
+    </div>
+
+
 
       <!-- Curs Valutar -->
       <div class="exchange">

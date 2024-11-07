@@ -100,3 +100,43 @@ footer.quote {
         gap: 15px;
     }
 }
+
+/* butoanele de limba */
+.change-language {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.lang-btn, #dark-mode-toggle {
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.lang-btn:hover, #dark-mode-toggle:hover {
+    background-color: #555;
+}
+
+/* Modul Dark */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .weather, .dark-mode .news, .dark-mode .todo, .dark-mode .exchange {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode footer.quote {
+    background-color: #444;
+    color: #e0e0e0;
+}
+

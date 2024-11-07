@@ -1,71 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Personal Dashboard</title>
     <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+</head>
+<body>
+    <!-- Butoane pentru schimbarea limbii -->
     <div class="change-language">
-      <button id="en">en</button>
-      <button id="ro">ro</button>
-      <button id="es">es</button>
-      <button id="de">de</button>
+        <button id="en" class="lang-btn">EN</button>
+        <button id="ro" class="lang-btn">RO</button>
+        <button id="es" class="lang-btn">ES</button>
+        <button id="de" class="lang-btn">DE</button>
+        <button id="dark-mode-toggle">Dark Mode</button>
     </div>
+
     <div class="wrapper">
-      <!-- Vremea -->
-      <div class="weather">
-        <img src="images\cloudy.png" alt="Weather icon" />
-        <h2>Locație utilizator</h2>
-        <p id="temperature">Grade Celsius</p>
-        <p id="forecast">Prognoza meteo pentru următoarele zile</p>
-        <div id="weather-daily"></div>
-      </div>
-
-      <!-- Stiri -->
-      <div class="news">
-        <h3>Știri Importante</h3>
-        <ul id="news-list">
-          <li>Știre 1</li>
-          <li>Știre 2</li>
-          <li>Știre 3</li>
-        </ul>
-      </div>
-
-      <!-- To-Do List -->
-      <div class="todo">
-        <h3>To-Do List</h3>
-        <ol id="task-list">
-          <li>Task1</li>
-          <li>Task2</li>
-          <li>Task3</li>
-        </ol>
-        <input type="text" id="task" />
-        <button id="add-task">Adaugă</button>
-      </div>
-
-      <!-- Curs Valutar -->
-      <div class="exchange">
-        <h3>Curs Valutar</h3>
-        <ul id="currency-list">
-          <li>EUR: ...</li>
-          <li>USD: ...</li>
-          <li>GBP: ...</li>
-        </ul>
-      </div>
+            <!-- Vremea -->
+        <div class="weather">
+            <img src="images/cloudy.png" alt="Weather icon" />
+            <h2>Locație utilizator</h2>
+            <p id="temperature">Grade Celsius</p>
+            <p id="forecast">Prognoza meteo pentru următoarele zile</p>
+            <div id="weather-daily"></div>
+        </div>
+         <!-- Stiri -->
+        <div class="news">
+            <h3>Știri Importante</h3>
+            <ul id="news-list">
+                <li>Știre 1</li>
+                <li>Știre 2</li>
+                <li>Știre 3</li>
+            </ul>
+        </div>
+        <!-- To-Do List -->
+        <div class="todo">
+            <h3>To-Do List</h3>
+            <ol id="task-list">
+                <li>Task1</li>
+                <li>Task2</li>
+                <li>Task3</li>
+            </ol>
+            <input type="text" id="task" />
+            <button id="add-task">Adaugă</button>
+        </div>
+        <!-- Curs Valutar -->
+        <div class="exchange">
+            <h3>Curs Valutar</h3>
+            <ul id="currency-list">
+                <li>EUR: ...</li>
+                <li>USD: ...</li>
+                <li>GBP: ...</li>
+            </ul>
+        </div>
     </div>
-
-    <!-- Citatul zilei in footer -->
+<!-- Citatul zilei in footer -->
     <footer class="quote">
-      <p id="quote">
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      </p>
+        <p id="quote">
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        </p>
     </footer>
+
     <script src="exchange_rate.js"></script>
     <script src="script2.js"></script>
     <script src="news.js"></script>
     <script src="quote.js"></script>
     <script src="fetch.js"></script>
-  </body>
+    <script src="darkmode.js"></script>
+</body>
 </html>

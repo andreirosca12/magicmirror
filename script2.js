@@ -6,7 +6,9 @@ const translation={
         todo:"To-do list",
         exchange:"Exchange rate",
         news:"Last news",
-        button_todo:"Add"
+        button_todo:"Add",
+        delete_todo:"Delete",
+        forecast:"Weather forecast for the next few days"
     },
     ro:{
         weather:"Vremea de azi",
@@ -15,7 +17,9 @@ const translation={
         todo:"Lista cu sarcini",
         exchange:"Cursul valutar",
         news:"Ultimele stiri",
-        button_todo:"Adauga"
+        button_todo:"Adauga",
+        delete_todo:"Sterge",
+        forecast:"Prognoza meteo pentru următoarele zile"
     },
     es:{
         weather:"El tiempo de hoy",
@@ -24,7 +28,10 @@ const translation={
         todo:"Lista de tareas pendientes",
         exchange:"Divisa",
         news:"Últimas noticias",
-        button_todo:"Agregar"
+        button_todo:"Agregar",
+        delete_todo:"Delete",
+        eliminar_todo:"Eliminar",
+        forecast:"Previsión meteorológica para los próximos días"
     },
     de:{
         weather:"Das heutige Wetter",
@@ -33,7 +40,9 @@ const translation={
         todo:"Aufgabenliste",
         exchange:"Wechselkurs",
         news:"Letzte Nachrichten",
-        button_todo:"Hinzufügen"
+        button_todo:"Hinzufügen",
+        delete_todo:"Löschen",
+        forecast:"Wettervorhersage für die nächsten Tage"
     }
 }
 const browser=navigator.language.split("-")[0];
@@ -43,5 +52,7 @@ function detectBrowserLanguage(browserLanguage){
     document.querySelector(".exchange h3").innerHTML=translation[browserLanguage].exchange;
     document.querySelector(".news h3").innerHTML=translation[browserLanguage].news;
     document.querySelector("#add-task").innerHTML=translation[browserLanguage].button_todo;
+    document.querySelector("#forecast").innerHTML=translation[browserLanguage].forecast;
+    document.querySelector("#delete-button").innerHTML=translation[browserLanguage].delete_todo;
 }
 detectBrowserLanguage(browser);

@@ -140,3 +140,27 @@ body.dark-mode {
     color: #e0e0e0;
 }
 
+/* Stilizare lainput si butonul de add task */
+.todo input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 8px;
+    font-size: 0.9em;
+}
+
+.todo button {
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.todo button:hover {
+    background-color: #45a049;
+}
+

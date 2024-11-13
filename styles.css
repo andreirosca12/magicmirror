@@ -257,3 +257,28 @@ body.dark-mode {
 .dark-mode .calendar-grid .has-task {
     background-color: #357a38;
 }
+
+/* Modul Dark pentru modal */
+.dark-mode .modal-content {
+    background-color: #1e1e1e;
+    color: #e0e0e0; 
+}
+
+.dark-mode .modal-content .close {
+    color: #e0e0e0; 
+}
+
+.dark-mode #task-input {
+    background-color: #2e2e2e;
+    color: #e0e0e0; 
+    border: 1px solid #555; 
+}
+
+.dark-mode .modal-content button {
+    background-color: #4CAF50; 
+    color: white;
+}
+
+.dark-mode .modal-content button:hover {
+    background-color: #45a049; 
+}
